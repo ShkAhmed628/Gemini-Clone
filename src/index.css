@@ -1,1 +1,88 @@
 @import "tailwindcss";
+
+
+
+
+#root
+{
+  font-family: 'Outfit', 'sans-serif';
+  --white: #ffffff;
+   --black: #000000;
+  --bg-gray: rgba(156,163,175,0.2);
+  --bg-dark: #202020;
+  --bg-light: #f0f2f5;
+  --lightgray: #c4c7c5;
+
+
+  /* text */
+  --gray: #585858;
+  --thingray: #3a3a3a;
+  
+  /* hover */
+  --hovergray: #e4e7ec;
+}
+
+
+#root {
+  font-family: 'Outfit', sans-serif;
+
+  /* base colors */
+  --white: #fff;
+  --black: #000;
+
+  /* backgrounds */
+  --bg-light: #f0f2f5;
+  --bg-dark: #202020;
+  --bg-gray: rgba(156, 163, 175, 0.2);
+
+  /* text colors */
+  --text-dark: #3a3a3a;
+  --text-med: #585858;
+  --text-light: #c4c7c5;
+
+  /* hover */
+  --hover-gray: #e4e7ec;
+}
+
+.main-container{
+  overflow-y: scroll;
+  scrollbar-width: none;      
+  -ms-overflow-style: none;   
+}
+
+body::-webkit-scrollbar {
+  appearance: none;          
+}
+
+
+.loader{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loader hr{
+  height: 14px;
+  border-radius: 4px;
+  border: none;
+
+  background: linear-gradient(to right,#9ed7ff,#ffffff,#9ed7ff);
+  background-size: 800px 50px;
+
+  animation: shimmer 1.5s infinite linear;
+}
+
+
+/* Animation */
+@keyframes shimmer{
+  0%{
+    background-position: -800px 0;
+  }
+  100%{
+    background-position: 800px 0;
+  }
+}
+
+
+
