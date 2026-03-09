@@ -5,7 +5,7 @@ import PromptInput from './PromptInput'
 import Welcome from './Welcome'
 import MainHeader from './MainHeader' 
 import Result from './Result'
-import Footer from './footer'
+import Footer from './Footer'
 import { useContext } from 'react'
 import { Context } from '../../Context/Context'
 
