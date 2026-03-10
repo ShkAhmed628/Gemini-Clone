@@ -46,7 +46,8 @@
 
 .main-container{
   overflow-y: scroll;
-  
+  scrollbar-width: none;      
+  -ms-overflow-style: none;   
 }
 
 body::-webkit-scrollbar {
@@ -59,8 +60,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   gap: 8px;
-} scrollbar-width: none;      
-  -ms-overflow-style: none;  
+}
 
 .loader hr{
   height: 14px;
@@ -73,10 +73,13 @@ body::-webkit-scrollbar {
   animation: shimmer 1.5s infinite linear;
 }
 
-.recent-scroll{
+.recent-scroll ,.result-scroll
+{
    scrollbar-width: none;      
   -ms-overflow-style: none;  
 }
+
+
 
 
 /* Animation */

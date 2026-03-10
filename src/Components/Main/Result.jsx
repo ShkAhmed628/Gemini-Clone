@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 
 const Result = ({recentPrompt , resultData , loading }) => {
   return (
-    <div className='sm:px-20 overflow-y-scroll h-[70vh] flex flex-col gap-6 py-6'>
+    <div className='result-scroll sm:px-20 overflow-y-scroll h-[70vh] flex flex-col gap-6 py-6'>
        <div className='flex sm:px-0 px-4  flex-row text-center items-center gap-2'>
             <img className='w-10 rounded-full' src={assets.user_icon} alt="user profile icon" />
            <p>{recentPrompt}</p>
