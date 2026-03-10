@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <div className={`   hidden md:flex py-7  flex-col justify-between bg-[var(--bg-light)]  ${extended ? 'w-[17%] px-5' : 'w-[5%] px-3'} h-screen transition-all duration-300`} >
 
-      <div className=" overflow-x-hidden overflow-x-visible flex gap-6 flex-col ">
+      <div className=" overflow-x-hidden overflow-y-hidden flex gap-6 flex-col ">
 
         <img onClick={() => setExtended(prev => !prev)} src={assets.menu_icon} alt="menu" className="w-5 cursor-pointer" />
        

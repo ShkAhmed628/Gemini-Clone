@@ -13,63 +13,84 @@ const ContextProvider = (props) => {
   const [loading, setloading] = useState(false);
   const [resultData, setresultData] = useState("");
 
+  // SEND PROMPT
   const onSent = async (prompt) => {
 
     setresultData("");
     setloading(true);
     setshowResults(true);
-    setRecentPrompt(input);
-    setprevPrompt((prev) => [...prev, input]);
+
+    setRecentPrompt(prompt);
+    setprevPrompt((prev) => [...prev, prompt]);
+
     const response = await runChat(prompt);
 
-    // Convert markdown to HTML
     const formattedResponse = marked.parse(response);
 
     setloading(false);
 
-    // Typing Effect of the response
+    // Typing Effect
+    let index = 0;
 
- let index = 0;
+    const typingInterval = setInterval(() => {
 
-  const typingInterval = setInterval(() => {
-  setresultData((prev) => prev + formattedResponse.slice(index, index + 3));
+      setresultData((prev) => prev + formattedResponse.slice(index, index + 3));
 
-  index += 3;
+      index += 3;
 
-  if (index >= formattedResponse.length) {
-    clearInterval(typingInterval);
-  }
- }, 25);
+      if (index >= formattedResponse.length) {
+        clearInterval(typingInterval);
+      }
 
-  setInput("");
+    }, 25);
 
+    setInput("");
   };
 
-  
-  
-const newChat = () => {
-  setloading(false);
-  setshowResults(false);
-  setRecentPrompt("");
-  setresultData("");
-  setInput("");
-};
+
+  // LOAD OLD PROMPT
+  const loadPrompt = async (prompt) => {
+
+    setInput(prompt);
+    setRecentPrompt(prompt);
+    setshowResults(true);
+    setloading(true);
+    setresultData("");
+
+    const response = await runChat(prompt);
+
+    const formattedResponse = marked.parse(response);
+
+    setloading(false);
+    setresultData(formattedResponse);
+  };
 
 
+  // START NEW CHAT
+  const newChat = () => {
+    setloading(false);
+    setshowResults(false);
+    setRecentPrompt("");
+    setresultData("");
+    setInput("");
+  };
 
- const contextValue = {
-  prevPrompt,
-  setprevPrompt,
-  onSent,
-  newChat,
-  setRecentPrompt,
-  recentPrompt,
-  showResult,
-  loading,
-  resultData,
-  input,
-  setInput,
-};
+
+  const contextValue = {
+    prevPrompt,
+    setprevPrompt,
+    onSent,
+    loadPrompt,
+    newChat,
+    setRecentPrompt,
+    recentPrompt,
+    showResult,
+    loading,
+    resultData,
+    input,
+    setInput,
+  };
+
   return (
     <Context.Provider value={contextValue}>
       {props.children}

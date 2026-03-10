@@ -4,6 +4,36 @@ import { assets } from "../../assets/assets";
 
 const PromptInput = ({input, setInput , onSent, showresult ,loading}) => {
 
+// Recognization 
+
+const startListening = () => {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Speech recognition is not supported in this browser");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = "en-US";   // language
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.start();
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    setInput(transcript); // put speech into input box
+  };
+
+  recognition.onerror = (event) => {
+    console.error("Speech recognition error:", event.error);
+  };
+};
+
+
 
 
   return (    
@@ -30,7 +60,7 @@ const PromptInput = ({input, setInput , onSent, showresult ,loading}) => {
 
         <div className="flex items-center gap-2 md:gap-4 ml-4">
           <img onClick={() => alert("Image upload feature is coming soon!")} src={assets.gallery_icon} alt="gallery" className="sm:w-6  w-4 cursor-pointer opacity-70 hover:opacity-100 transition" />
-          <img onClick={() => alert("Voice feature is coming soon!")}   src={assets.mic_icon} alt="mic" className="sm:w-6 w-4 cursor-pointer opacity-70 hover:opacity-100 transition"/>
+          <img onClick={startListening}  src={assets.mic_icon} alt="mic" className="sm:w-6 w-4 cursor-pointer opacity-70 hover:opacity-100 transition"/>
           <img onClick={()=>onSent(input)} src={assets.send_icon} alt="send" className="sm:w-6  w-4 cursor-pointer opacity-70 hover:opacity-100 transition"/>
         </div>
         
