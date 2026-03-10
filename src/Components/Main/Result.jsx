@@ -11,13 +11,13 @@ const Result = ({recentPrompt , resultData , loading }) => {
        </div>
 
        <div className='flex gap-1 sm:gap:3 ' >
-           <img className='w-10 h-10' src={assets.gemini_icon} alt="" />
+           <img className='  w-6 h-6 sm:w-10 sm:h-10 ' src={assets.gemini_icon} alt="" />
            {loading
            ? <div className="loader">
                <hr />
                <hr />
                <hr />
-             </div> : <div className='text-[17px] font-normal leading-relaxed' dangerouslySetInnerHTML={{__html:resultData}}/> }
+             </div> : <div className='text-[10px] sm:text-[17px] font-normal leading-relaxed' dangerouslySetInnerHTML={{__html:resultData}}/> }
        </div>
 
 

@@ -13,7 +13,18 @@ const PromptInput = ({input, setInput , onSent, showresult ,loading}) => {
       <div className=" w-full sm:w-[880px] md:mx-0 mx-2 flex items-center md:justify-between bg-[var(--bg-light)] rounded-full px-6 py-4">
 
         {/* Input Field */}
-        <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder="Enter a prompt here" className="flex-1 bg-transparent outline-none  text-[var(--text-dark)]  placeholder:text-[var(--text-med)] sm:text-lg "/>
+        <input 
+        onChange={(e) => setInput(e.target.value)} 
+        onKeyDown={(e) => {
+        if (e.key === "Enter" && input.trim()) {
+          onSent(input);
+          setInput("");
+         }
+       }}
+       value={input}
+       type="text"
+       placeholder="Enter a prompt here"
+       className="flex-1 bg-transparent outline-none text-[var(--text-dark)] placeholder:text-[var(--text-med)] sm:text-lg"/>
         
         {/* Right Icons */}
 

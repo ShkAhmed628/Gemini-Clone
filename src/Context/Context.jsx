@@ -29,22 +29,19 @@ const ContextProvider = (props) => {
 
     // Typing Effect of the response
 
-    let index = 0;
+ let index = 0;
 
-    const typingInterval = setInterval(() => {
+  const typingInterval = setInterval(() => {
+  setresultData((prev) => prev + formattedResponse.slice(index, index + 3));
 
-      setresultData((prev) => prev + formattedResponse.charAt(index));
+  index += 3;
 
-      index++;
+  if (index >= formattedResponse.length) {
+    clearInterval(typingInterval);
+  }
+ }, 25);
 
-      if (index >= formattedResponse.length) {
-        clearInterval(typingInterval);
-      }
-
-    }, 10); 
-
-    setInput("");
-    
+  setInput("");
 
   };
 

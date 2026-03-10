@@ -46,8 +46,7 @@
 
 .main-container{
   overflow-y: scroll;
-  scrollbar-width: none;      
-  -ms-overflow-style: none;   
+  
 }
 
 body::-webkit-scrollbar {
@@ -60,7 +59,8 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
+} scrollbar-width: none;      
+  -ms-overflow-style: none;  
 
 .loader hr{
   height: 14px;
@@ -71,6 +71,11 @@ body::-webkit-scrollbar {
   background-size: 800px 50px;
 
   animation: shimmer 1.5s infinite linear;
+}
+
+.recent-scroll{
+   scrollbar-width: none;      
+  -ms-overflow-style: none;  
 }
 
 
@@ -84,5 +89,9 @@ body::-webkit-scrollbar {
   }
 }
 
-
-
+/* Mobile screens */
+@media (max-width: 768px) {
+  .loader {
+    width: 80%;
+  }
+}
